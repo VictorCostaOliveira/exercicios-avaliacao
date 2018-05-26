@@ -1,0 +1,21 @@
+Metodo Reverse para o grafo de fluxo
+
+(1) public AbstractStringBuilder reverse() {
+(2) 	boolean hasSurrogates = false;
+(3) 	int n = count - 1;
+(4) 	for (int j = (n-1) >> 1; j >= 0; j--) {
+(5) 		int k = n - j;
+(6) 		char cj = value[j];
+(7) 		char ck = value[k];
+(8) 		value[j] = ck;
+(9) 		value[k] = cj;
+(10) 		if (Character.isSurrogate(cj) ||
+(12) 			Character.isSurrogate(ck)) {
+(13) 			hasSurrogates = true;
+(14) 		}
+(15) 	}
+(16) 	if (hasSurrogates) {
+(17) 		reverseAllValidSurrogatePairs();
+(18) 	}
+(19) 	return this;
+(20) }
